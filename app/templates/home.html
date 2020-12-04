@@ -1,0 +1,29 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+
+<body>
+    <div class="title">
+        <h1>Duvar</h1>
+        <p style="font-size:14px">Anonim olarak bir şeyler yaz.</p>
+    </div>
+
+    <div class="form">
+        <form method="POST">
+            <textarea name="message" style="margin: 10px 10px" rows=2 cols=70></textarea>
+            <br>
+            <input type="submit" style="padding: 5px 5px;"/>
+        </form>
+    </div>
+
+    <div class="entries">
+        {% for entry in entries[::-1] %}
+        <p>{{ entry }}</p>
+        {% endfor %}
+    </div>
+
+</body>
+
+</html>

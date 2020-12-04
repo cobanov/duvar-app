@@ -1,0 +1,19 @@
+.entries{
+    font-size:22px;
+    color:white;
+    text-align:left;
+  }
+  
+  body{
+    background-color:black;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:38px;
+    text-align: center;
+
+  }
+  
+  .title{
+    background-color:black;
+    color:white;
+  }
+  
