@@ -6,7 +6,9 @@
 
 <body>
     <div class="header">
-        <img src="https://i.ibb.co/QvwxK1J/duvarov.png" alt="">
+        <a href="https://duvarov.herokuapp.com/">
+            <img src="https://i.ibb.co/QvwxK1J/duvarov.png" alt="">
+        </a>
     </div>
 
     <div class="form">
@@ -18,19 +20,19 @@
     </div>
 
     <div class="entries">
-
         <div class="entries_box">
             {% for entry, time in entries[::-1] %}
             <div class="message_box">
-                <p><span class="entry"> ▶    {{ entry[:280] }}</span>
-                    
+                <p>
+                    <span class="entry"> ▶ {{ entry[:280] }}</span>
             </div>
-            <span class="time">{{ time }}</span></p>
+            <span class="time">
+                {{ time }}
+            </span>
+            </p>
             {% endfor %}
         </div>
-
     </div>
-
 </body>
 
 </html>

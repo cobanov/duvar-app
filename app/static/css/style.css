@@ -32,33 +32,29 @@ body {
 .message_box{
   background-color: white;
   border-radius: 3px 3px 3px 3px;
-  margin:3px
+  padding: 1px 20px 1px 20px ;
+  text-align: justify;
 
 }
 .entry{
-
+  
   flex-grow: stretch;
   color:black;
-  padding:8px 8px 8px 8px;
+  /* padding:8px 8px 8px 8px; */
   font-size: 18px;
 
 }
 
 .time{
+  margin-top:10px;
   color:grey;
   font-size:12px;
 }
 
 .buton{
-
-background: url(https://i.ibb.co/NWzHHDD/send.png);
-
-background-color: white;
-width:64px;
-height:64px;
-font-size:20px;
-  padding: 5px 5px;
-
+  font-size: 20px;
+  margin-bottom:15px;
+  padding:5px
 }
 
 
