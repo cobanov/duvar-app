@@ -6,29 +6,65 @@
 
 <body>
     <div class="header">
-        <a href="https://duvarov.herokuapp.com/">
+        <a href="https://duvarov-test.herokuapp.com/">
             <img src="https://i.ibb.co/QvwxK1J/duvarov.png" alt="">
         </a>
     </div>
 
+    <div class="menu_style">
+        <a href="https://duvarov-test.herokuapp.com/top">Top Entries</a>
+        |
+        <a href="https://duvarov-test.herokuapp.com/">Stream</a>
+        |
+        <a href="https://duvarov-test.herokuapp.com/rules">Rules</a>
+                
+
+    </div>
     <div class="form">
         <form method="POST">
             <textarea name="message" style="margin: 10px 10px" rows=2 cols=70></textarea>
             <br>
-            <input type="submit" class="buton"/>
+            <input type="submit" class="buton" />
         </form>
     </div>
 
     <div class="entries">
         <div class="entries_box">
-            {% for entry, time in entries[::-1] %}
+
+            {% for message_id, entry, time, vote in entries[::-1] %}
+
             <div class="message_box">
+
                 <p>
                     <span class="entry"> ▶ {{ entry[:280] }}</span>
+
             </div>
-            <span class="time">
-                {{ time }}
-            </span>
+
+
+            <div class="under_box">
+
+                <span class="time">
+                    {{ time }}
+                </span>
+
+                <span class="vote" style="color: white;">
+                    | Vote: {{ vote }} |
+
+                </span>
+
+                <span class="message_id" style="text-align: right;">
+                    message_id: {{ message_id }} |
+
+                    <form action="/upvote/{{ message_id }}" method="post">
+                        <button class="upvote" type="submit"> +1 </button>
+                    </form>
+
+                </span>
+
+
+            </div>
+
+
             </p>
             {% endfor %}
         </div>

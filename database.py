@@ -1,9 +1,12 @@
 import sqlite3
 
-CREATE_TABLE = "CREATE TABLE IF NOT EXISTS entries (content TEXT NOT NULL UNIQUE, date TEXT)"
-CREATE_ENTRY = "INSERT INTO entries VALUES (?, ?)"
-RETRIEVE_ENTRIES = "SELECT * FROM entries ORDER BY date ASC"
+CREATE_TABLE = "CREATE TABLE IF NOT EXISTS entries (message_id INTEGER PRIMARY KEY AUTOINCREMENT, content TEXT NOT NULL UNIQUE, date TEXT, vote INTEGER)"
+CREATE_ENTRY = "INSERT INTO entries VALUES (?, ?, ?, ?)"
+RETRIEVE_ENTRIES = "SELECT * FROM entries"
+RETRIEVE_ENTRIES_TOP = "SELECT * FROM entries ORDER BY vote ASC"
 WIPE_ENTRIES = "DROP TABLE entries"
+UPVOTE = "UPDATE entries SET vote = vote + 1 WHERE message_id = ?"
+message_id = 1
 
 def create_tables():
     with sqlite3.connect("data.db") as connection:
@@ -11,8 +14,10 @@ def create_tables():
 
 
 def create_entry(content, date):
+    global message_id
     with sqlite3.connect("data.db") as connection:
-        connection.execute(CREATE_ENTRY, (content, date))
+        connection.execute(CREATE_ENTRY, (message_id, content, date, 0))
+    message_id += 1
 
 
 def retrieve_entries():
@@ -20,6 +25,17 @@ def retrieve_entries():
         cursor = connection.cursor()
         cursor.execute(RETRIEVE_ENTRIES)
         return cursor.fetchall()
+
+def retrieve_entries_top():
+    with sqlite3.connect("data.db") as connection:
+        cursor = connection.cursor()
+        cursor.execute(RETRIEVE_ENTRIES_TOP)
+        return cursor.fetchall()
+
+def upvote(message_id):
+    with sqlite3.connect("data.db") as connection:
+        cursor = connection.cursor()
+        cursor.execute(UPVOTE, (message_id))
 
 def clear_database():
     with sqlite3.connect("data.db") as connection:

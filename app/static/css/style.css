@@ -1,6 +1,15 @@
 body {
   background-color: black;
   font-family: Arial, Helvetica, sans-serif;
+  color:white;
+}
+
+
+.menu_style{
+text-align:center;
+color:white;
+background-color:black;
+margin-bottom: 50px;
 }
 
 .header {
@@ -24,6 +33,7 @@ body {
 }
 
 .entries_box{
+
   display:flex;
   flex-direction: column;
   text-align:left;
@@ -45,16 +55,20 @@ body {
 
 }
 
-.time{
+.under_box{
+  margin:5px; 
   margin-top:10px;
   color:grey;
   font-size:12px;
 }
 
-.buton{
-  font-size: 20px;
-  margin-bottom:15px;
-  padding:5px
+
+.upvote{
+  background-color:black;
+  color:white;
 }
 
 
+.rules{
+  text-align: center;
+}
