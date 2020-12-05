@@ -5,23 +5,30 @@
 </head>
 
 <body>
-    <div class="title">
-        <h1>Duvar</h1>
-        <p style="font-size:14px">Anonim olarak bir şeyler yaz.</p>
+    <div class="header">
+        <img src="https://i.ibb.co/QvwxK1J/duvarov.png" alt="">
     </div>
 
     <div class="form">
         <form method="POST">
             <textarea name="message" style="margin: 10px 10px" rows=2 cols=70></textarea>
             <br>
-            <input type="submit" style="padding: 5px 5px;"/>
+            <input type="submit" class="buton"/>
         </form>
     </div>
 
     <div class="entries">
-        {% for entry in entries[::-1] %}
-        <p>{{ entry }}</p>
-        {% endfor %}
+
+        <div class="entries_box">
+            {% for entry, time in entries[::-1] %}
+            <div class="message_box">
+                <p><span class="entry"> ▶    {{ entry[:280] }}</span>
+                    
+            </div>
+            <span class="time">{{ time }}</span></p>
+            {% endfor %}
+        </div>
+
     </div>
 
 </body>

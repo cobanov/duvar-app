@@ -1,25 +1,64 @@
-.entries {
-  font-size: 22px;
-  color: white;
-  text-align: left;
-}
-
-p {flex-flow: column wrap;
-  color:black;
-  background-color: white;
-  border-radius: 15px 50px 30px 15px;
-  padding:5px;
-font-size:16px
-}
-
 body {
   background-color: black;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 38px;
+}
+
+.header {
+  background-color: black;
+  color: white;
   text-align: center;
 }
 
-.title {
+.form{
+
   background-color: black;
   color: white;
+  text-align: center;
+
 }
+
+.entries {
+  text-align: center;
+    margin-left: 30%;
+    margin-right: 30%;
+}
+
+.entries_box{
+  display:flex;
+  flex-direction: column;
+  text-align:left;
+}
+
+.message_box{
+  background-color: white;
+  border-radius: 3px 3px 3px 3px;
+  margin:3px
+
+}
+.entry{
+
+  flex-grow: stretch;
+  color:black;
+  padding:8px 8px 8px 8px;
+  font-size: 18px;
+
+}
+
+.time{
+  color:grey;
+  font-size:12px;
+}
+
+.buton{
+
+background: url(https://i.ibb.co/NWzHHDD/send.png);
+
+background-color: white;
+width:64px;
+height:64px;
+font-size:20px;
+  padding: 5px 5px;
+
+}
+
+
