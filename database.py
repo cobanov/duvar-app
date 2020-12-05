@@ -1,6 +1,6 @@
 import sqlite3
 
-CREATE_TABLE = "CREATE TABLE IF NOT EXISTS entries (content TEXT, date TEXT)"
+CREATE_TABLE = "CREATE TABLE IF NOT EXISTS entries (content TEXT NOT NULL UNIQUE, date TEXT)"
 CREATE_ENTRY = "INSERT INTO entries VALUES (?, ?)"
 RETRIEVE_ENTRIES = "SELECT * FROM entries ORDER BY date ASC"
 
