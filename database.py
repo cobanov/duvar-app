@@ -5,7 +5,7 @@ CREATE_ENTRY = "INSERT INTO entries VALUES (?, ?, ?, ?)"
 RETRIEVE_ENTRIES = "SELECT * FROM entries"
 RETRIEVE_ENTRIES_TOP = "SELECT * FROM entries ORDER BY vote ASC"
 WIPE_ENTRIES = "DROP TABLE entries"
-UPVOTE = "UPDATE entries SET vote = vote + 1 WHERE message_id = ?"
+UPVOTE = "UPDATE entries SET vote = vote + 1 WHERE message_id = (?)"
 message_id = 1
 
 def create_tables():
@@ -35,7 +35,8 @@ def retrieve_entries_top():
 def upvote(message_id):
     with sqlite3.connect("data.db") as connection:
         cursor = connection.cursor()
-        cursor.execute(UPVOTE, (message_id))
+        
+        cursor.execute(UPVOTE, (message_id, ))
 
 def clear_database():
     with sqlite3.connect("data.db") as connection:
