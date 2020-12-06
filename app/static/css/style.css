@@ -38,7 +38,7 @@ body {
 }
 
 .main {
-  grid-area: main;
+  grid-area: main;  
 }
 
 .navbar{
@@ -65,10 +65,13 @@ textarea {
   background-color: white;
   border-radius: 3px 3px 3px 3px;
   padding: 1px 20px 1px 20px ;
+  word-break: break-all;
+
 }
 .entry{
   color:black;
   font-size: 18px;
+
 }
 
 .under_box{
