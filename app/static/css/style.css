@@ -1,58 +1,74 @@
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+@import url(https://fonts.googleapis.com/css?family=Ubuntu);
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro);
+
 body {
   background-color: black;
-  font-family: Arial, Helvetica, sans-serif;
-  color:white;
+    font-family:"Ubuntu";
 }
 
-
-.menu_style{
-text-align:center;
-color:white;
-background-color:black;
-margin-bottom: 50px;
-}
-
-.header {
-  background-color: black;
+.grid-container {
+  display: grid;
   color: white;
+
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 20px 20px;
+  grid-template-areas:
+    "top-left logo top-right"
+    "ads main sidebar ";
+}
+
+.logo {
+  grid-area: logo;
   text-align: center;
 }
 
-.form{
+.top-left {
+  grid-area: top-left;
+}
 
-  background-color: black;
-  color: white;
+.top-right {
+  grid-area: top-right;
+}
+
+.ads {
+  grid-area: ads;
+}
+
+.main {
+  grid-area: main;
+}
+
+.navbar{
+  text-align:center;
+  font-size:20px;
+  margin:10px;
+  margin-bottom: 50px;
+}
+
+.form {
   text-align: center;
-
 }
 
-.entries {
-  text-align: center;
-    margin-left: 30%;
-    margin-right: 30%;
+textarea {
+  width: 90%;
 }
 
-.entries_box{
-
-  display:flex;
-  flex-direction: column;
-  text-align:left;
+.sidebar {
+  grid-area: sidebar;
 }
+
 
 .message_box{
   background-color: white;
   border-radius: 3px 3px 3px 3px;
   padding: 1px 20px 1px 20px ;
-  text-align: justify;
-
 }
 .entry{
-  
-  flex-grow: stretch;
   color:black;
-  /* padding:8px 8px 8px 8px; */
   font-size: 18px;
-
 }
 
 .under_box{
@@ -62,13 +78,14 @@ margin-bottom: 50px;
   font-size:12px;
 }
 
-
 .upvote{
   background-color:black;
   color:white;
 }
 
-
 .rules{
   text-align: center;
+  color:white;
 }
+
+
