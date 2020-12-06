@@ -12,7 +12,7 @@ body {
   display: grid;
   color: white;
 
-  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-columns: 1fr 4fr 1fr;
   grid-template-rows: 1fr;
   gap: 20px 20px;
   grid-template-areas:

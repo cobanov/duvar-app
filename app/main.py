@@ -1,5 +1,5 @@
 import datetime
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 import database
 import os
 
@@ -24,22 +24,44 @@ def home():
     return render_template("home.html", entries=database.retrieve_entries())
 
 
+@app.route("/main", methods=["GET", "POST"])
+def main():
+    if request.method == "POST":
+        try:
+            entry_content = request.form.get("message")
+            current_time = datetime.datetime.today() + datetime.timedelta(hours=3)
+            database.create_entry(
+                entry_content, current_time.strftime("%m.%d.%Y, %H:%M"))
+        except Exception as e:
+            pass
+
+    return render_template("home.html", entries=database.retrieve_entries())
+
+
 @app.route("/wipe", methods=["GET", "POST"])
 def wipe():
     if request.method == "POST":
         password = request.form.get("password")
         if password == token:
             database.clear_database()
-            return render_template("home.html", entries=database.retrieve_entries())
+            return redirect(url_for('main'))
 
     return render_template("wipe.html")
 
+@app.route("/delete/<message_id>", methods=["GET", "POST"])
+def delete(message_id):
+    if request.method == "POST":
+        password = request.form.get("password")
+        if password == token:
+            database.delete(message_id)
+            return redirect(url_for('main'))
+
+    return render_template("delete.html")
 
 @app.route("/upvote/<message_id>", methods=["GET", "POST"])
 def upvote(message_id):
     database.upvote(message_id)
     return render_template("succes.html")
-
 
 @app.route("/top", methods=["GET", "POST"])
 def top():
