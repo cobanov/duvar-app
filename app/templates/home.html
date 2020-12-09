@@ -20,11 +20,19 @@
 
         <div class="top-left"></div>
 
-        <div class="top-right"></div>
+        <div class="top-right"><a href="https://github.com/cobanov/duvar-app"><img src="/static/assets/github_logo.png" width=50% alt="" style="float: right"></div></a>
 
         <div class="ads"></div>
 
         <div class="main">
+
+            <div class="rules">
+
+            <p style="font-size:12px"> tamamen eğitim amaçlı yaptığım bir uygulama, bir web uygulaması nasıl geliştirilir ve
+        deployment nasıl yapılır hem kendime hem de yeni developer arkadaşlara öğretebilmek için açık kaynak kodlu ve tamamen gönüllülük amaçlı bu projeyi yaptım.
+        bu sitenin amacının dışına çıkmaması ancak sizin elinizde, kırıcı her şeyden kaçındığınız için teşekkür ederim gençler. -cobanov 🦊</p>
+
+            </div>
 
             <div class="navbar">
                 <a href="/top">Top Entries</a>
@@ -53,7 +61,7 @@
                     <div class="under_box">
 
                         <span class="vote" style="color: white;">
-                            | Vote: {{ vote }} |
+                             Vote: {{ vote }} |
 
                         </span>
 
@@ -63,7 +71,7 @@
 
 
                         <span class="message_id" style="text-align: right;">
-                            | message_id: {{ message_id }} |
+                            | message_id: {{ message_id }}
 
                             <form action="/upvote/{{ message_id }}" method="post">
                                 <button class="upvote" type="submit"> +1 </button>

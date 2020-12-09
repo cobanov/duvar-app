@@ -7,7 +7,11 @@ import os
 app = Flask(__name__)
 
 database.create_tables()
-token = os.getenv("password")
+# token = os.getenv("password") # If you are deploying the project on PaaS like heroku or 
+                                # if you don't want to push your password to GitHub you 
+                                # should pass a password as environmental variable.
+
+token = "Enter a password"
 
 
 @app.route("/", methods=["GET", "POST"])
