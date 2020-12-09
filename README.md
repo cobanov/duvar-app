@@ -13,6 +13,7 @@ Duvarov kişilerin kendilerine anonim bir duvar yaratabileceği bir uygulamadır
 
 
 Repo heroku deployment için tamamen hazırdır, `Procfile` ve `runtime.txt` dosyaları değiştirilerek versiyon değişikliği yapılabilir.
+Pythonanywhere tarafında sadece requirements.txt yüklenilerek proje canlıya alınabilir.
 
 Duvar temizliği için heroku içerisinde yerel değişkeniniz `password`'un ayarlanması gerekmektedir.
 
