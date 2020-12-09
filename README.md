@@ -1,6 +1,6 @@
 # duvar-app
 
-![](assets/duvarov.png)
+![](app/static/assets/duvarov.png)
 
 Duvarov kişilerin kendilerine anonim bir duvar yaratabileceği bir uygulamadır. 
 
@@ -20,3 +20,12 @@ Duvar temizliği için heroku içerisinde yerel değişkeniniz `password`'un aya
 - flask
 - sqlite3
 - gunicorn
+
+# To-Do's
+- [ ]  Link, telefon numaraları gönderilmesini engellemek için regex
+- [ ] Küfür gönderilmesini engellemek için bir çalışma
+- [ ] Tamamen boşluk veya yazı içermeyen karakterlerin gönderilmesini engelleme
+- [ ] header kısımlarının bir kez yazılıp diğer sayfalarda extend edilmesi
+- [ ] HTML ve CSS dosyalarında düzenlemeler
+> front-end tarafında muhtemelen çok fazla hatam vardır, projeyi yaparken öğrendim :)
+- [ ] Database'in app içerisinde değil servis tarafında tutulması
