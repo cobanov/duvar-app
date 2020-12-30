@@ -9,13 +9,18 @@ Duvarov kişilerin kendilerine anonim bir duvar yaratabileceği bir uygulamadır
 
 ## Installation
 
-`wsgi.py` dosyası çalıştırılarak direkt `127.0.0.1:5000` adresinden erişim sağlanabilir. 
+`wsgi.py` dosyası çalıştırılarak direkt `0.0.0.0:5000` adresinden erişim sağlanabilir. 
 
 
 Repo heroku deployment için tamamen hazırdır, `Procfile` ve `runtime.txt` dosyaları değiştirilerek versiyon değişikliği yapılabilir.
 Pythonanywhere tarafında sadece requirements.txt yüklenilerek proje canlıya alınabilir.
 
 Duvar temizliği için heroku içerisinde yerel değişkeniniz `password`'un ayarlanması gerekmektedir.
+
+## Docker
+`docker build -t duvar:latest .`
+
+`docker run -d -p 5000:5000 duvar:latest`
 
 ## Requirements:
 - flask
