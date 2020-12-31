@@ -1,49 +1,9 @@
-<html>
-
-<head>
-    <link rel="stylesheet" href="/static/css/style.css">
-    <link rel="apple-touch-icon" sizes="180x180" href="/static/assets/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/static/assets/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/static/assets/favicon-16x16.png">
-    <title>Duvarov</title>
-
-</head>
-
-<body>
-    <div class="grid-container">
-
-        <div class="logo">
-            <a href="/">
-                <img src="/static/assets/duvarov.png" width=100% alt="">
-            </a>
-        </div>
-
-        <div class="top-left"></div>
-
-        <div class="top-right"></div>
-
-        <div class="ads"></div>
-
-        <div class="main">
-
-        <div class="navbar">
-            <a href="/top">Top Entries</a>
-            |
-            <a href="/">Stream</a>
-            |
-            <a href="/rules">Rules</a>
-
-        </div>
-
-        <div class="form">
-            <form method="POST">
-                <input type="password" name="password" placeholder="password">
-                <input type="submit" value="Login">
-            </form>
-        </div>
-
-
-
-</body>
-
-</html>
+{% extends "master.html" %}
+{% block content %}
+    <div class="form">
+        <form method="POST">
+            <input type="password" name="password" placeholder="password">
+            <input type="submit" value="Login">
+        </form>
+    </div>
+{% endblock %}
