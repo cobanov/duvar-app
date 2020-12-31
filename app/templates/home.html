@@ -1,99 +1,50 @@
-<html>
+{% extends "master.html" %}
+{% block content %}
+    <div class="rules">
+        <p style="font-size:12px"> 
+            tamamen eğitim amaçlı yaptığım bir uygulama, bir web uygulaması nasıl geliştirilir ve
+            deployment nasıl yapılır hem kendime hem de yeni developer arkadaşlara öğretebilmek için açık kaynak kodlu ve tamamen gönüllülük amaçlı bu projeyi yaptım.
+            bu sitenin amacının dışına çıkmaması ancak sizin elinizde, kırıcı her şeyden kaçındığınız için teşekkür ederim gençler. -cobanov 🦊
+        </p>
+    </div>
+    
+    <div class="form">
+        <form method="POST">
+            <textarea name="message"></textarea>
+            <br>
+            <input type="submit" class="buton" style="margin:10px">
+        </form>
+    </div>
 
-<head>
-    <link rel="stylesheet" href="/static/css/style.css">
-    <link rel="apple-touch-icon" sizes="180x180" href="/static/assets/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/static/assets/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/static/assets/favicon-16x16.png">
-    <title>Duvarov</title>
-
-</head>
-
-<body>
-    <div class="grid-container">
-
-        <div class="logo">
-            <a href="/">
-                <img src="/static/assets/duvarov.png" width=100% alt="">
-            </a>
-        </div>
-
-        <div class="top-left"></div>
-
-        <div class="top-right"><a href="https://github.com/cobanov/duvar-app"><img src="/static/assets/github_logo.png" width=70% alt="" style="float: right"></div></a>
-
-        <div class="ads"></div>
-
-        <div class="main">
-
-            <div class="rules">
-
-            <p style="font-size:12px"> tamamen eğitim amaçlı yaptığım bir uygulama, bir web uygulaması nasıl geliştirilir ve
-        deployment nasıl yapılır hem kendime hem de yeni developer arkadaşlara öğretebilmek için açık kaynak kodlu ve tamamen gönüllülük amaçlı bu projeyi yaptım.
-        bu sitenin amacının dışına çıkmaması ancak sizin elinizde, kırıcı her şeyden kaçındığınız için teşekkür ederim gençler. -cobanov 🦊</p>
-
-            </div>
-
-            <div class="navbar">
-                <a href="/top">Top Entries</a>
-                |
-                <a href="/">Stream</a>
-                |
-                <a href="/rules">Rules</a>
-
-            </div>
-
-            <div class="form">
-                <form method="POST">
-                    <textarea name="message"></textarea>
-                    <br>
-                    <input type="submit" class="buton" style="margin:10px">
-                </form>
-            </div>
-
-            <div class="entries">
-                <div class="entries_box">
-                    {% for message_id, entry, time, vote in entries[::-1] %}
-                    <div class="message_box">
-                        <p>
-                            <span class="entry"> ▶ {{ entry[:280] }}</span>
-                    </div>
+    <div class="entries">
+        <div class="entries_box">
+            {% for message_id, entry, time, vote in entries[::-1] %}
+            <div class="message_box">
+                <p>
+                    <span class="entry"> ▶ {{ entry[:280] }}</span>
+                    </div>                    
                     <div class="under_box">
-
                         <span class="vote" style="color: white;">
-                             Vote: {{ vote }} |
-
+                            Vote: {{ vote }} |
                         </span>
 
                         <span class="time">
                             {{ time }}
                         </span>
 
-
                         <span class="message_id" style="text-align: right;">
                             | message_id: {{ message_id }}
-
                             <form action="/upvote/{{ message_id }}" method="post">
                                 <button class="upvote" type="submit"> +1 </button>
                             </form>
-
                         </span>
-
-
                     </div>
-
-
-                    </p>
-                    {% endfor %}
-                </div>
+                </p>
+            {% endfor %}
             </div>
-
         </div>
-
-        <div class="sidebar"></div>
-
     </div>
-</body>
 
-
-</html>
+    <div class="sidebar"></div>
+ {% endblock %}
+ 
