@@ -27,7 +27,7 @@ Duvar temizliği için heroku içerisinde yerel değişkeniniz `password`'un aya
 - sqlite3
 - gunicorn
 
-# To-Do's
+## To-Do's
 - [ ] Link, telefon numaraları gönderilmesini engellemek için regex
 - [ ] Küfür gönderilmesini engellemek için bir çalışma
 - [ ] Tamamen boşluk veya yazı içermeyen karakterlerin gönderilmesini engelleme
