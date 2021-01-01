@@ -10,19 +10,19 @@
     
     <div class="form">
         <form method="POST">
-            <textarea name="message"></textarea>
+            <textarea placeholder="Düşüncelerini buraya yaz, seni kimse görmez :)" name="message"></textarea>
             <br>
-            <input type="submit" class="buton" style="margin:10px">
+            <input type="submit" class="button">
         </form>
     </div>
 
     <div class="entries">
         <div class="entries_box">
             {% for message_id, entry, time, vote in entries[::-1] %}
-            <div class="message_box">
-                <p>
-                    <span class="entry"> ▶ {{ entry[:280] }}</span>
-                    </div>                    
+                <div class="message_box">
+                    <p><span class="entry"> ▶ {{ entry[:280] }}</span></p>
+                </div> 
+                <p>                 
                     <div class="under_box">
                         <span class="vote" style="color: white;">
                             Vote: {{ vote }} |
@@ -41,7 +41,7 @@
                     </div>
                 </p>
             {% endfor %}
-            </div>
+            
         </div>
     </div>
 
