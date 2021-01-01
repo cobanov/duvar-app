@@ -32,8 +32,9 @@ Duvar temizliği için heroku içerisinde yerel değişkeniniz `password`'un aya
 - [ ] Küfür gönderilmesini engellemek için bir çalışma
 - [ ] Tamamen boşluk veya yazı içermeyen karakterlerin gönderilmesini engelleme
 - [x] header kısımlarının bir kez yazılıp diğer sayfalarda extend edilmesi. [Selman Baskaya](https://github.com/selmanbaskaya)
-- [ ] HTML ve CSS dosyalarında düzenlemeler. [Enes Sonmez](https://github.com/enesonmez)
+- [x] HTML ve CSS dosyalarında düzenlemeler. [Enes Sonmez](https://github.com/enesonmez)
 - [ ] Database'in app içerisinde değil servis tarafında tutulması
+- [x] Projenin dockerize edilmesi
 
 ## Contributors
 - [Selman Baskaya](https://github.com/selmanbaskaya)
