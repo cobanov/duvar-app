@@ -60,7 +60,7 @@ def delete(message_id):
             database.delete(message_id)
             return redirect(url_for('main'))
 
-    return render_template("delete.html")
+    return render_template("wipe.html")
 
 @app.route("/upvote/<message_id>", methods=["GET", "POST"])
 def upvote(message_id):
