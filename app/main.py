@@ -7,11 +7,11 @@ import os
 app = Flask(__name__)
 
 database.create_tables()
-# token = os.getenv("password") # If you are deploying the project on PaaS like heroku or 
-                                # if you don't want to push your password to GitHub you 
-                                # should pass a password as environmental variable.
+# token = os.getenv("password") # If you are deploying the project on PaaS like heroku or
+# if you don't want to push your password to GitHub you
+# should pass a password as environmental variable.
 
-token = "Enter a password"
+token = "password"
 
 
 @app.route("/", methods=["GET", "POST"])
@@ -52,6 +52,7 @@ def wipe():
 
     return render_template("wipe.html")
 
+
 @app.route("/delete/<message_id>", methods=["GET", "POST"])
 def delete(message_id):
     if request.method == "POST":
@@ -62,10 +63,12 @@ def delete(message_id):
 
     return render_template("wipe.html")
 
+
 @app.route("/upvote/<message_id>", methods=["GET", "POST"])
 def upvote(message_id):
     database.upvote(message_id)
     return render_template("succes.html")
+
 
 @app.route("/top", methods=["GET", "POST"])
 def top():

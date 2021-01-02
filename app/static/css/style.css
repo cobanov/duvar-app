@@ -40,65 +40,74 @@ body {
 
 .navbar{
   text-align:center;
-  font-size:20px;
+  font-size: 40px;
+}
+
+.ui.inverted.menu{
   margin:10px;
-  margin-bottom: 50px;
-}
-
-.form {
-  text-align: center;
-}
-
-textarea {
-  width: 90%;
-  font-size: 16px;
-}
-
-.button {
-  background-color: #e7e7e7;
-  color: black;
-  border: 2px solid #fb7273;
-  padding: 10px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 14px;
-  margin: 20px 2px;
-  cursor: pointer;
-}
-
-.sidebar {
-  grid-area: sidebar;
 }
 
 
-.message_box{
-  background-color: white;
-  border-radius: 3px 3px 3px 3px;
-  padding: 1px 20px 1px 20px ;
-  word-break: break-word;
-
-}
-.entry{
-  color:black;
-  font-size: 18px;
-
-}
-
-.under_box{
-  margin:5px;
-  margin-top:10px;
-  color:grey;
-  font-size:12px;
-}
-
-.upvote{
-  background-color:black;
-  color:white;
-}
-
+/* home */
 .rules{
   text-align: center;
   color:white;
 }
+
+.form{
+  display: block;
+  overflow: hidden;
+  margin: 20px;
+
+}
+
+.ui.form{
+  text-align:center;
+  margin: 20px;
+}
+
+
+/* Entries */
+.entry{
+  display: flex;
+}
+
+.ui.label{
+  font-size: 16px;
+  word-break: break-word;
+  flex-grow: 1;
+  min-height: 50px;
+  padding:16px;
+  margin:auto;
+  display: block;
+  overflow: hidden;
+
+}
+
+.ui.fade.reveal{
+  flex-grow: 1;
+  display: block;
+  overflow: hidden;
+}
+
+
+.ui.labeled.button{
+  flex-grow: 0;
+  margin:auto;
+  margin-left: 10px;
+  min-width: 80px;
+}
+
+.under_box{
+  margin-top: 1px;
+  margin-bottom: 25px;
+  color:grey;
+  font-size:12px;
+}
+
+/* Sidebar */
+.sidebar {
+  grid-area: sidebar;
+}
+
 
