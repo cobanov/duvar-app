@@ -1,50 +1,100 @@
 {% extends "master.html" %}
 {% block content %}
-    <div class="rules">
-        <p style="font-size:12px"> 
-            tamamen eğitim amaçlı yaptığım bir uygulama, bir web uygulaması nasıl geliştirilir ve
-            deployment nasıl yapılır hem kendime hem de yeni developer arkadaşlara öğretebilmek için açık kaynak kodlu ve tamamen gönüllülük amaçlı bu projeyi yaptım.
-            bu sitenin amacının dışına çıkmaması ancak sizin elinizde, kırıcı her şeyden kaçındığınız için teşekkür ederim gençler. -cobanov 🦊
-        </p>
-    </div>
-    
-    <div class="form">
-        <form method="POST">
-            <textarea name="message"></textarea>
-            <br>
-            <input type="submit" class="button">
-        </form>
-    </div>
 
-    <div class="entries">
-        <div class="entries_box">
-            {% for message_id, entry, time, vote in entries[::-1] %}
-                <div class="message_box">
-                    <p><span class="entry"> ▶ {{ entry[:280] }}</span></p>
-                </div> 
-                <p>                 
-                    <div class="under_box">
-                        <span class="vote" style="color: white;">
-                            Vote: {{ vote }} |
-                        </span>
+<!-- Rules Section -->
+<div class="rules">
+    <div class="ui inverted hidden divider"></div>
+    <p style="font-size:12px">
+        tamamen eğitim amaçlı yaptığım bir uygulama, bir web uygulaması nasıl geliştirilir ve
+        deployment nasıl yapılır hem kendime hem de yeni developer arkadaşlara öğretebilmek için açık kaynak kodlu ve
+        tamamen gönüllülük amaçlı bu projeyi yaptım.
+        bu sitenin amacının dışına çıkmaması ancak sizin elinizde, kırıcı her şeyden kaçındığınız için teşekkür ederim
+        gençler. -cobanov 🦊
+    </p>
+    <div class="ui inverted hidden divider"></div>
+</div>
 
-                        <span class="time">
-                            {{ time }}
-                        </span>
+<!-- Form Section -->
+<div class="ui form">
+    <form method="POST">
+        <div class="ui fluid action input">
+            <input name="message" type="text" placeholder="Düşüncelerin...">
+            <button class="ui icon button">
+                <i class="paper plane icon"></i>
+            </button>
+        </div>
+    </form>
+</div>
 
-                        <span class="message_id" style="text-align: right;">
-                            | message_id: {{ message_id }}
-                            <form action="/upvote/{{ message_id }}" method="post">
-                                <button class="upvote" type="submit"> +1 </button>
-                            </form>
-                        </span>
-                    </div>
-                </p>
-            {% endfor %}
-            
+<!-- Divider -->
+<div class="ui inverted horizontal divider">
+    <h3>Bağrıntılar</h3>
+</div>
+
+<!-- Entries Section -->
+<div class="entries">
+
+    {% for message_id, entry, time, vote in entries[::-1] %}
+
+    <!-- Entry Block -->
+    <div class="entry">
+
+        {% if False %}
+        <!-- There will be condition-->
+        <div class="ui fade reveal">
+
+            <div class="visible content">
+                <div class="ui label">
+                    <i class="angle right icon"></i> {{ ("*" * 100) }}
+                </div>
+            </div>
+
+            <div class="hidden content">
+                <div class="ui label">
+                    <i class="angle right icon"></i> {{ entry[:280] }}
+                </div>
+            </div>
+
+        </div>
+
+        {% else %}
+        <!-- Content Block -->
+        <div class="ui label">
+            <i class="angle right icon"></i> {{ entry[:280] }}
+        </div>
+
+        {% endif %}
+        <!-- Like Button -->
+        <div class="ui labeled button" tabindex="0">
+            <form action="/upvote/{{ message_id }}" method="post">
+                <button class="ui inverted red button">
+                    <i class="heart icon"></i> {{ vote }}
+                </button>
+            </form>
         </div>
     </div>
 
-    <div class="sidebar"></div>
- {% endblock %}
- 
+    <!-- Remain -->
+    <div class="under_box">
+        <span class="time">
+            {{ time }}
+        </span>
+
+        <span class="message_id" style="text-align: right;">
+            | message_id: {{ message_id }}
+
+        </span>
+    </div>
+
+    {% endfor %}
+    
+</div>
+
+<!-- End of the timeline -->
+<div class="ui inverted horizontal divider">
+    <h3>Yolun sonuna geldin!</h3>
+</div>
+
+<!-- Sidebar Section -->
+<div class="sidebar"></div>
+{% endblock %}
