@@ -50,13 +50,16 @@ body {
 .rules{
   text-align: center;
   color:white;
-  background-color: red;
 }
 
 .disclaimer{
   text-align: center;
   color:white;
   font-size: 12px;
+}
+
+.success{
+  word-break: break-word;
 }
 
 
