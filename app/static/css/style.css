@@ -86,9 +86,11 @@ body {
 
 .ui.labeled.button{
   flex-grow: 0;
+  
   margin:auto;
-  margin-left: 10px;
-  min-width: 80px;
+  margin-left:auto;
+  min-width:fit-content;
+  transform: scale(0.8);
 }
 
 .under_box{
