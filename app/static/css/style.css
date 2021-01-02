@@ -40,18 +40,23 @@ body {
 
 .navbar{
   text-align:center;
-  font-size: 40px;
 }
 
 .ui.inverted.menu{
   margin:10px;
 }
 
-
 /* home */
 .rules{
   text-align: center;
   color:white;
+  background-color: red;
+}
+
+.disclaimer{
+  text-align: center;
+  color:white;
+  font-size: 12px;
 }
 
 
@@ -86,7 +91,6 @@ body {
 
 .ui.labeled.button{
   flex-grow: 0;
-  
   margin:auto;
   margin-left:auto;
   min-width:fit-content;
