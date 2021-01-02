@@ -54,12 +54,6 @@ body {
   color:white;
 }
 
-.form{
-  display: block;
-  overflow: hidden;
-  margin: 20px;
-
-}
 
 .ui.form{
   text-align:center;
@@ -81,7 +75,6 @@ body {
   margin:auto;
   display: block;
   overflow: hidden;
-
 }
 
 .ui.fade.reveal{
@@ -110,4 +103,9 @@ body {
   grid-area: sidebar;
 }
 
+.contributors{
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+}
 
