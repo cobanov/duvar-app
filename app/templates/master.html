@@ -1,41 +1,80 @@
 <!DOCTYPE html>
 <html lang="tr">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="description" content="Anonim olarak bir şeyler yaz.">
-        <meta http-equiv="content-language" content="tr">
 
-        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}" />
-        <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='assets/apple-touch-icon.png') }}" />
-        <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='assets/favicon-32x32.png') }}" />
-        <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='assets/favicon-16x16.png') }}" />
-        <title>Duvarov</title>{{ url_for('static', filename='assets/assets/duvarov.png') }}
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Anonim olarak bir şeyler yaz.">
+    <meta http-equiv="content-language" content="tr">
 
-    </head>
-    <body>
-        <div class="grid-container">
-            <div class="logo">
-                <a href="/">
-                    <img src="{{ url_for('static', filename='assets/duvarov.png') }}" width="100%" alt="" />
-                </a>
-            </div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
 
-            <div class="top-left"></div>
-            <div class="top-right"></div>
-            <div class="ads"></div>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}" />
+    <link rel="apple-touch-icon" sizes="180x180"
+        href="{{ url_for('static', filename='assets/apple-touch-icon.png') }}" />
+    <link rel="icon" type="image/png" sizes="32x32"
+        href="{{ url_for('static', filename='assets/favicon-32x32.png') }}" />
+    <link rel="icon" type="image/png" sizes="16x16"
+        href="{{ url_for('static', filename='assets/favicon-16x16.png') }}" />
+    <title>Duvarov</title>{{ url_for('static', filename='assets/assets/duvarov.png') }}
 
-            <div class="main">
-                <div class="navbar">
-                    <a href="/top">Top Entries</a>
-                    |
-                    <a href="/">Stream</a>
-                    |
-                    <a href="/rules">Rules</a>
+</head>
+
+<body>
+    <div class="grid-container">
+
+        <!-- Logo Section -->
+        <div class="logo">
+            <a href="/">
+                <img src="{{ url_for('static', filename='assets/duvarov.png') }}" width="100%" alt="" />
+            </a>
+        </div>
+
+        <!-- Top Left Section -->
+        <div class="top-left"></div>
+
+        <!-- Top Right Section -->
+        <div class="top-right">
+            <div class="ui fade reveal">
+                <div class="visible content">
+                    <img src="static/assets/black.jpeg" class="ui small image">
                 </div>
-
-                {% block main %} {% block content %}{% endblock %} {% endblock %}
+                <div class="hidden content">
+                    <img src="static/assets/github_logo.png" class="ui small image">
+                </div>
             </div>
         </div>
-    </body>
+
+        <!-- Ads Section -->
+        <div class="ads"></div>
+
+        <!-- Main Section -->
+        <div class="main">
+
+            <div class="navbar">
+
+                <div class="ui inverted compact menu">
+                    <a href="/top" class="item">
+                        Top
+                    </a>
+                    <a href="/" class="item">
+                        Stream
+                    </a>
+                    <a href="/rules" class="item">
+                        Rules
+                    </a>
+                </div>
+
+            </div>
+
+
+
+            {% block main %} {% block content %}{% endblock %} {% endblock %}
+        </div>
+
+    </div>
+
+</body>
+
 </html>
