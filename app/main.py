@@ -1,5 +1,5 @@
 import datetime
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, flash
 import database
 import os
 
@@ -12,8 +12,9 @@ database.create_tables()
 # should pass a password as environmental variable.
 
 token = "password"
+app.secret_key = "./]asd}vcbOH."
 
-
+@app.route("/main", methods=["GET", "POST"])
 @app.route("/", methods=["GET", "POST"])
 def home():
     if request.method == "POST":
@@ -22,20 +23,7 @@ def home():
             current_time = datetime.datetime.today() + datetime.timedelta(hours=3)
             database.create_entry(
                 entry_content, current_time.strftime("%m.%d.%Y, %H:%M"))
-        except Exception as e:
-            pass
-
-    return render_template("home.html", entries=database.retrieve_entries())
-
-
-@app.route("/main", methods=["GET", "POST"])
-def main():
-    if request.method == "POST":
-        try:
-            entry_content = request.form.get("message")
-            current_time = datetime.datetime.today() + datetime.timedelta(hours=3)
-            database.create_entry(
-                entry_content, current_time.strftime("%m.%d.%Y, %H:%M"))
+            flash("Gönderi Başarılı")
         except Exception as e:
             pass
 
@@ -48,7 +36,8 @@ def wipe():
         password = request.form.get("password")
         if password == token:
             database.clear_database()
-            return redirect(url_for('main'))
+            flash("Silme İşlemi Başarılı")
+            return redirect(url_for('home'))
 
     return render_template("wipe.html")
 
@@ -59,7 +48,8 @@ def delete(message_id):
         password = request.form.get("password")
         if password == token:
             database.delete(message_id)
-            return redirect(url_for('main'))
+            flash("Silme İşlemi Başarılı")
+            return redirect(url_for('home'))
 
     return render_template("wipe.html")
 
@@ -67,7 +57,8 @@ def delete(message_id):
 @app.route("/upvote/<message_id>", methods=["GET", "POST"])
 def upvote(message_id):
     database.upvote(message_id)
-    return render_template("succes.html")
+    flash("Gönderiyi Beğendiniz")
+    return redirect(url_for('home'))
 
 
 @app.route("/top", methods=["GET", "POST"])
@@ -78,6 +69,7 @@ def top():
             current_time = datetime.datetime.today() + datetime.timedelta(hours=3)
             database.create_entry(
                 entry_content, current_time.strftime("%m.%d.%Y, %H:%M"))
+            flash("Gönderi Başarılı")
         except Exception as e:
             pass
 

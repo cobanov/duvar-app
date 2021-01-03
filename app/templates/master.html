@@ -7,8 +7,13 @@
     <meta name="description" content="Anonim olarak bir şeyler yaz.">
     <meta http-equiv="content-language" content="tr">
 
+    <!-- Semantic UI-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
     <!-- <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script> -->
+    <!-- Fomantic UI-->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.6/dist/semantic.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.6/dist/semantic.min.js"></script>
 
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}" />
     <link rel="apple-touch-icon" sizes="180x180"
@@ -21,7 +26,10 @@
 
 </head>
 
-<body>
+<body id="toast">
+    <!-- Flash Message-->
+    {% include "includes/messages.html" %}
+
     <div class="grid-container">
 
         <!-- Logo Section -->
