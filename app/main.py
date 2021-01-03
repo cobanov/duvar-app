@@ -6,13 +6,14 @@ import os
 
 app = Flask(__name__)
 
-#database.create_tables()
+# database.create_tables()
 
 # token = os.getenv("password") # If you are deploying the project on PaaS like heroku or
 # if you don't want to push your password to GitHub you
 # should pass a password as environmental variable.
 
 token = os.getenv("password")
+
 
 @app.route("/", methods=["GET", "POST"])
 def home():
@@ -24,6 +25,8 @@ def home():
         except Exception as e:
             pass
 
+        return render_template("succes.html")
+
     return render_template("home.html", entries=database.retrieve_entries())
 
 
@@ -34,8 +37,10 @@ def main():
             entry_content = request.form.get("message")
             print(entry_content)
             database.create_entry(entry_content)
+
         except Exception as e:
             pass
+        return render_template("succes.html")
 
     return render_template("home.html", entries=database.retrieve_entries())
 
@@ -77,6 +82,8 @@ def top():
             database.create_entry(entry_content)
         except Exception as e:
             pass
+
+        return render_template("succes.html")
 
     return render_template("home.html", entries=database.retrieve_entries_top())
 
