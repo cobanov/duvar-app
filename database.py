@@ -1,73 +1,60 @@
 import sqlite3
+import psycopg2
 
-CREATE_TABLE = "CREATE TABLE IF NOT EXISTS entries (message_id INTEGER PRIMARY KEY AUTOINCREMENT, content TEXT NOT NULL UNIQUE, date TEXT, vote INTEGER)"
-CREATE_ENTRY = "INSERT INTO entries VALUES (?, ?, ?, ?)"
-RETRIEVE_ENTRIES = "SELECT * FROM entries"
-RETRIEVE_ENTRIES_TOP = "SELECT * FROM entries ORDER BY vote ASC"
-WIPE_ENTRIES = "DROP TABLE entries"
-UPVOTE = "UPDATE entries SET vote = vote + 1 WHERE message_id = (?)"
-DELETE_ENTRY = "DELETE FROM entries WHERE message_id = (?)"
-
-message_id = 1
+## Credentials
+DB_NAME = os.getenv("DB_NAME")
+DB_USER = os.getenv("DB_USER")
+DB_PASSWORD = os.getenv("DB_PASSWORD")
+DB_HOST = os.getenv("DB_HOST")
 
 
-def create_tables():
-    with sqlite3.connect("data.db") as connection:
-        connection.execute(CREATE_TABLE)
+# Queries
+CREATE_ENTRY = "INSERT INTO public.duvarapp (content_msg) VALUES (%s)"
+RETRIEVE_ENTRIES = "SELECT * FROM public.duvarapp ORDER BY message_id ASC"
+RETRIEVE_ENTRIES_TOP = "SELECT * FROM public.duvarapp ORDER BY vote_count ASC"
+UPVOTE = "UPDATE public.duvarapp SET vote_count = vote_count + 1 WHERE message_id = (%s)"
+DELETE_ENTRY = "DELETE FROM public.duvarapp WHERE message_id = (%s)"
+WIPE = "DELETE FROM public.duvarapp WHERE message_id < (%s)"
 
 
-def create_entry(content, date):
-    global message_id
-    print(message_id)
-    print(type(message_id))
+# conn = psycopg2.connect(database=DB_NAME, user=DB_USER,
+#                         password=DB_PASSWORD, host=DB_HOST)
 
-    with sqlite3.connect("data.db") as connection:
-
-        try:
-            connection.execute(CREATE_ENTRY, (message_id, content, date, 0))
-            message_id += 1
-
-        except Exception as e:
-            if "message_id" in str(e):
-                while True:
-                    try:
-                        connection.execute(
-                            CREATE_ENTRY, (message_id, content, date, 0))
-                        message_id += 1
-                        break
-
-                    except:
-                        message_id += 1
-
+def create_entry(content):
+    with psycopg2.connect(database=DB_NAME, user=DB_USER, password=DB_PASSWORD, host=DB_HOST) as connection:
+        cursor = connection.cursor()
+        cursor.execute(CREATE_ENTRY, (content,))
+        connection.commit()
 
 def retrieve_entries():
-    with sqlite3.connect("data.db") as connection:
+    with psycopg2.connect(database=DB_NAME, user=DB_USER, password=DB_PASSWORD, host=DB_HOST) as connection:
         cursor = connection.cursor()
         cursor.execute(RETRIEVE_ENTRIES)
         return cursor.fetchall()
 
-
 def retrieve_entries_top():
-    with sqlite3.connect("data.db") as connection:
+    with psycopg2.connect(database=DB_NAME, user=DB_USER, password=DB_PASSWORD, host=DB_HOST) as connection:
         cursor = connection.cursor()
         cursor.execute(RETRIEVE_ENTRIES_TOP)
         return cursor.fetchall()
 
-
 def upvote(message_id):
-    with sqlite3.connect("data.db") as connection:
+    with psycopg2.connect(database=DB_NAME, user=DB_USER, password=DB_PASSWORD, host=DB_HOST) as connection:
         cursor = connection.cursor()
         cursor.execute(UPVOTE, (message_id, ))
+        connection.commit()
 
 
 def delete(message_id):
-    with sqlite3.connect("data.db") as connection:
+    with psycopg2.connect(database=DB_NAME, user=DB_USER, password=DB_PASSWORD, host=DB_HOST) as connection:
         cursor = connection.cursor()
         cursor.execute(DELETE_ENTRY, (message_id, ))
+        connection.commit()
 
 
-def clear_database():
-    with sqlite3.connect("data.db") as connection:
+def wipe(message_id):
+    with psycopg2.connect(database=DB_NAME, user=DB_USER, password=DB_PASSWORD, host=DB_HOST) as connection:
         cursor = connection.cursor()
-        cursor.execute(WIPE_ENTRIES)
-        connection.execute(CREATE_TABLE)
+        cursor.execute(WIPE, (message_id, ))
+        connection.commit()
+

@@ -6,22 +6,21 @@ import os
 
 app = Flask(__name__)
 
-database.create_tables()
+#database.create_tables()
+
 # token = os.getenv("password") # If you are deploying the project on PaaS like heroku or
 # if you don't want to push your password to GitHub you
 # should pass a password as environmental variable.
 
-token = "password"
-
+token = os.getenv("password")
 
 @app.route("/", methods=["GET", "POST"])
 def home():
     if request.method == "POST":
         try:
             entry_content = request.form.get("message")
-            current_time = datetime.datetime.today() + datetime.timedelta(hours=3)
-            database.create_entry(
-                entry_content, current_time.strftime("%m.%d.%Y, %H:%M"))
+            print(entry_content)
+            database.create_entry(entry_content)
         except Exception as e:
             pass
 
@@ -33,21 +32,20 @@ def main():
     if request.method == "POST":
         try:
             entry_content = request.form.get("message")
-            current_time = datetime.datetime.today() + datetime.timedelta(hours=3)
-            database.create_entry(
-                entry_content, current_time.strftime("%m.%d.%Y, %H:%M"))
+            print(entry_content)
+            database.create_entry(entry_content)
         except Exception as e:
             pass
 
     return render_template("home.html", entries=database.retrieve_entries())
 
 
-@app.route("/wipe", methods=["GET", "POST"])
-def wipe():
+@app.route("/wipe/<message_id>", methods=["GET", "POST"])
+def wipe(message_id):
     if request.method == "POST":
         password = request.form.get("password")
         if password == token:
-            database.clear_database()
+            database.wipe(message_id)
             return redirect(url_for('main'))
 
     return render_template("wipe.html")
@@ -75,9 +73,8 @@ def top():
     if request.method == "POST":
         try:
             entry_content = request.form.get("message")
-            current_time = datetime.datetime.today() + datetime.timedelta(hours=3)
-            database.create_entry(
-                entry_content, current_time.strftime("%m.%d.%Y, %H:%M"))
+            print(entry_content)
+            database.create_entry(entry_content)
         except Exception as e:
             pass
 
