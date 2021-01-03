@@ -3,7 +3,6 @@ from flask import Flask, render_template, request, redirect, url_for
 import database
 import os
 
-
 app = Flask(__name__)
 
 database.create_tables()
@@ -19,9 +18,11 @@ def home():
     if request.method == "POST":
         try:
             entry_content = request.form.get("message")
-            current_time = datetime.datetime.today() + datetime.timedelta(hours=3)
-            database.create_entry(
-                entry_content, current_time.strftime("%m.%d.%Y, %H:%M"))
+            current_time = datetime.datetime.today() + datetime.timedelta(
+                hours=3)
+            if entry_content != '':
+                database.create_entry(entry_content,
+                                      current_time.strftime("%m.%d.%Y, %H:%M"))
         except Exception as e:
             pass
 
@@ -33,9 +34,10 @@ def main():
     if request.method == "POST":
         try:
             entry_content = request.form.get("message")
-            current_time = datetime.datetime.today() + datetime.timedelta(hours=3)
-            database.create_entry(
-                entry_content, current_time.strftime("%m.%d.%Y, %H:%M"))
+            current_time = datetime.datetime.today() + datetime.timedelta(
+                hours=3)
+            database.create_entry(entry_content,
+                                  current_time.strftime("%m.%d.%Y, %H:%M"))
         except Exception as e:
             pass
 
@@ -75,13 +77,15 @@ def top():
     if request.method == "POST":
         try:
             entry_content = request.form.get("message")
-            current_time = datetime.datetime.today() + datetime.timedelta(hours=3)
-            database.create_entry(
-                entry_content, current_time.strftime("%m.%d.%Y, %H:%M"))
+            current_time = datetime.datetime.today() + datetime.timedelta(
+                hours=3)
+            database.create_entry(entry_content,
+                                  current_time.strftime("%m.%d.%Y, %H:%M"))
         except Exception as e:
             pass
 
-    return render_template("home.html", entries=database.retrieve_entries_top())
+    return render_template("home.html",
+                           entries=database.retrieve_entries_top())
 
 
 @app.route("/rules")
