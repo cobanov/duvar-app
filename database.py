@@ -1,5 +1,6 @@
 import sqlite3
 import psycopg2
+import os
 
 ## Credentials
 DB_NAME = os.getenv("DB_NAME")
