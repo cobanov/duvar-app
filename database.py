@@ -1,4 +1,5 @@
 import sqlite3
+from app.entryController import *
 
 CREATE_TABLE = "CREATE TABLE IF NOT EXISTS entries (message_id INTEGER PRIMARY KEY AUTOINCREMENT, content TEXT NOT NULL UNIQUE, date TEXT, vote INTEGER)"
 CREATE_ENTRY = "INSERT INTO entries VALUES (?, ?, ?, ?)"
@@ -20,24 +21,25 @@ def create_entry(content, date):
     global message_id
     print(message_id)
     print(type(message_id))
+    if entryContentCheck(content):
+        content = entryFilter(content)
+        with sqlite3.connect("data.db") as connection:
 
-    with sqlite3.connect("data.db") as connection:
+            try:
+                connection.execute(CREATE_ENTRY, (message_id, content, date, 0))
+                message_id += 1
 
-        try:
-            connection.execute(CREATE_ENTRY, (message_id, content, date, 0))
-            message_id += 1
+            except Exception as e:
+                if "message_id" in str(e):
+                    while True:
+                        try:
+                            connection.execute(
+                                CREATE_ENTRY, (message_id, content, date, 0))
+                            message_id += 1
+                            break
 
-        except Exception as e:
-            if "message_id" in str(e):
-                while True:
-                    try:
-                        connection.execute(
-                            CREATE_ENTRY, (message_id, content, date, 0))
-                        message_id += 1
-                        break
-
-                    except:
-                        message_id += 1
+                        except:
+                            message_id += 1
 
 
 def retrieve_entries():
