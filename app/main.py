@@ -24,7 +24,8 @@ def home():
                 entry_content, current_time.strftime("%m.%d.%Y, %H:%M"))
         except Exception as e:
             pass
-
+        
+        return render_template("succes.html")
     return render_template("home.html", entries=database.retrieve_entries())
 
 
@@ -38,6 +39,7 @@ def main():
                 entry_content, current_time.strftime("%m.%d.%Y, %H:%M"))
         except Exception as e:
             pass
+        return render_template("succes.html")
 
     return render_template("home.html", entries=database.retrieve_entries())
 
@@ -80,6 +82,7 @@ def top():
                 entry_content, current_time.strftime("%m.%d.%Y, %H:%M"))
         except Exception as e:
             pass
+        return render_template("succes.html")
 
     return render_template("home.html", entries=database.retrieve_entries_top())
 
