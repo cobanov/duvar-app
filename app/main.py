@@ -2,6 +2,7 @@ import datetime
 from flask import Flask, render_template, request, redirect, url_for
 import database
 import os
+from app.entryUtils import *
 
 
 app = Flask(__name__)
@@ -20,8 +21,9 @@ def home():
         try:
             entry_content = request.form.get("message")
             current_time = datetime.datetime.today() + datetime.timedelta(hours=3)
-            database.create_entry(
-                entry_content, current_time.strftime("%m.%d.%Y, %H:%M"))
+            if entryController(entry_content):
+                database.create_entry(
+                    entry_content, current_time.strftime("%m.%d.%Y, %H:%M"))
         except Exception as e:
             pass
 
