@@ -50,6 +50,8 @@ body {
 .rules{
   text-align: center;
   color:white;
+  word-break: break-word;
+
 }
 
 .disclaimer{
