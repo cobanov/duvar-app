@@ -12,7 +12,7 @@ def entryContentCheck(content):
 def entryFilter(content):
     """ """
     content = content.split(" ")
-    with open("app/wordBlacklist.txt", "r", encoding="utf-8") as file:
+    with open("app/wordBlackList.txt", "r", encoding="utf-8") as file:
         bad_words_list = file.read().splitlines()
         clean_content = []
 
