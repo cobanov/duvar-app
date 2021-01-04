@@ -28,7 +28,7 @@ Duvar temizliği için heroku içerisinde yerel değişkeniniz `password`'un aya
 - gunicorn
 
 ## To-Do's
-- [ ] Link, telefon numaraları gönderilmesini engellemek için regex
+- [x] Link, telefon numaraları gönderilmesini engellemek için regex
 - [ ] Küfür gönderilmesini engellemek için bir çalışma
 - [ ] Tamamen boşluk veya yazı içermeyen karakterlerin gönderilmesini engelleme
 - [x] header kısımlarının bir kez yazılıp diğer sayfalarda extend edilmesi. [Selman Baskaya](https://github.com/selmanbaskaya)
