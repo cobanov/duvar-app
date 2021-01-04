@@ -1,6 +1,8 @@
 import sqlite3
 import psycopg2
 import os
+from app.entryController import entryContentCheck, entryFilter
+
 
 ## Credentials
 DB_NAME = os.getenv("DB_NAME")
@@ -22,10 +24,12 @@ WIPE = "DELETE FROM public.duvarapp WHERE message_id < (%s)"
 #                         password=DB_PASSWORD, host=DB_HOST)
 
 def create_entry(content):
-    with psycopg2.connect(database=DB_NAME, user=DB_USER, password=DB_PASSWORD, host=DB_HOST) as connection:
-        cursor = connection.cursor()
-        cursor.execute(CREATE_ENTRY, (content,))
-        connection.commit()
+    if entryContentCheck(content):
+        content = entryFilter(content)
+        with psycopg2.connect(database=DB_NAME, user=DB_USER, password=DB_PASSWORD, host=DB_HOST) as connection:
+            cursor = connection.cursor()
+            cursor.execute(CREATE_ENTRY, (content,))
+            connection.commit()
 
 def retrieve_entries():
     with psycopg2.connect(database=DB_NAME, user=DB_USER, password=DB_PASSWORD, host=DB_HOST) as connection:
