@@ -1,0 +1,24 @@
+<!-- Jinja2 Template Flash Message-->
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <ul class=flashes>
+            {% for content in messages %}
+                <script type="text/javascript">
+
+                    $(document).ready(function() {
+                      $('#toast')
+                        .toast({
+                            class: "danger",
+                            title: "Awesome!",
+                            showIcon: "egg",
+                            displayTime: 2500,
+                            message: "{{ content }}",
+                            showProgress: "bottom",
+                            position: "top right"
+                        });
+                    });
+                </script>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endwith %}
