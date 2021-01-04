@@ -1,4 +1,3 @@
-import sqlite3
 import psycopg2
 import os
 from app.entryController import entryContentCheck, entryFilter
