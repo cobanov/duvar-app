@@ -15,8 +15,9 @@ def entryFilter(content):
     with open("app/wordBlacklist.txt", "r", encoding="utf-8") as file:
         bad_words_list = file.read().splitlines()
         clean_content = []
-
+    
         for word in content:
+            word = ''.join([i for i in word if not i.isdigit()]) 
             if word in bad_words_list:
                 word = len(word) * '*'
                 clean_content.append(word)
