@@ -14,7 +14,7 @@ app = Flask(__name__)
 
 token = os.getenv("password")
 
-
+@app.route("/main", methods=["GET", "POST"])
 @app.route("/", methods=["GET", "POST"])
 def home():
     if request.method == "POST":
@@ -25,21 +25,6 @@ def home():
         except Exception as e:
             pass
 
-        return render_template("succes.html")
-
-    return render_template("home.html", entries=database.retrieve_entries())
-
-
-@app.route("/main", methods=["GET", "POST"])
-def main():
-    if request.method == "POST":
-        try:
-            entry_content = request.form.get("message")
-            print(entry_content)
-            database.create_entry(entry_content)
-
-        except Exception as e:
-            pass
         return render_template("succes.html")
 
     return render_template("home.html", entries=database.retrieve_entries())
