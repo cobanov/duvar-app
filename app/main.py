@@ -36,7 +36,7 @@ def wipe(message_id):
         password = request.form.get("password")
         if password == token:
             database.wipe(message_id)
-            return redirect(url_for('main'))
+            return redirect(url_for('home'))
 
     return render_template("wipe.html")
 
@@ -47,7 +47,7 @@ def delete(message_id):
         password = request.form.get("password")
         if password == token:
             database.delete(message_id)
-            return redirect(url_for('main'))
+            return redirect(url_for('home'))
 
     return render_template("wipe.html")
 
