@@ -58,8 +58,7 @@ def delete(message_id):
 @app.route("/upvote/<message_id>", methods=["GET", "POST"])
 def upvote(message_id):
     database.upvote(message_id)
-    flash("Gönderiyi Beğendiniz")
-    return redirect(url_for('home'))
+    return render_template('succes.html')
 
 
 @app.route("/top", methods=["GET", "POST"])
