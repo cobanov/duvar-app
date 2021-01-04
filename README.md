@@ -39,3 +39,5 @@ Duvar temizliği için heroku içerisinde yerel değişkeniniz `password`'un aya
 ## Contributors
 - [Selman Baskaya](https://github.com/selmanbaskaya)
 - [Enes Sonmez](https://github.com/enesonmez)
+- [Murat Can Kurtulus](https://github.com/makermotion)
+- [Melih](https://github.com/msrexe)
