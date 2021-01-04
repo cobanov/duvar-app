@@ -27,7 +27,6 @@ def home():
 
         except Exception as e:
             pass
-        return render_template("succes.html")
 
     return render_template("home.html", entries=database.retrieve_entries())
 
@@ -74,7 +73,6 @@ def top():
             flash("Gönderi Başarılı")
         except Exception as e:
             pass
-        return render_template("succes.html")
 
     return render_template("home.html", entries=database.retrieve_entries_top())
 
