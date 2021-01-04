@@ -2,24 +2,26 @@ import json
 
 
 def entryContentCheck(content):
-    #content = str(content).strip()
-    if content == "":
+    """ """
+    if content == "" or content == " ":
         return False
+
     return True
 
 
 def entryFilter(content):
+    """ """
     content = content.split(" ")
     with open("app/wordBlacklist.txt", "r", encoding="utf-8") as file:
-        swearing_list = file.read().splitlines()
-        # print(swearing_list)
-        for i in range(len(content)):
-            for swearing in swearing_list:
-                #print(f"{swearing}, {content[i]}")
-                if content[i] == swearing:
-                    content[i] = len(swearing) * '*'
-    str = ""
-    for word in content:
-        str += word + " "
-    print("filterli : "+str)
-    return str
+        bad_words_list = file.read().splitlines()
+        clean_content = []
+
+        for word in content:
+            if word in bad_words_list:
+                word = len(word) * '*'
+                clean_content.append(word)
+            else:
+                clean_content.append(word)
+
+        clean_content_str = " ".join(clean_content)
+    return clean_content_str
