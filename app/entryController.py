@@ -1,5 +1,3 @@
-import json
-
 
 def entryContentCheck(content):
     """ """
