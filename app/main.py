@@ -24,8 +24,10 @@ def home():
             database.create_entry(
                 entry_content, current_time.strftime("%m.%d.%Y, %H:%M"))
             flash("Gönderi Başarılı")
+
         except Exception as e:
             pass
+        return render_template("succes.html")
 
     return render_template("home.html", entries=database.retrieve_entries())
 
@@ -72,6 +74,7 @@ def top():
             flash("Gönderi Başarılı")
         except Exception as e:
             pass
+        return render_template("succes.html")
 
     return render_template("home.html", entries=database.retrieve_entries_top())
 
