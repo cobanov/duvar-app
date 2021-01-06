@@ -20,9 +20,10 @@ def home():
     if request.method == "POST":
         try:
             entry_content = request.form.get("message")
-            current_time = datetime.datetime.today() + datetime.timedelta(hours=3)
+            current_time = (datetime.datetime.today() + datetime.timedelta(hours=3)
+                            ).strftime("%m.%d.%Y, %H:%M")
             database.create_entry(
-                entry_content, current_time.strftime("%m.%d.%Y, %H:%M"))
+                entry_content, current_time)
             flash("Gönderi Başarılı")
 
         except Exception as e:
@@ -66,9 +67,10 @@ def top():
     if request.method == "POST":
         try:
             entry_content = request.form.get("message")
-            current_time = datetime.datetime.today() + datetime.timedelta(hours=3)
+            current_time = (datetime.datetime.today() + datetime.timedelta(hours=3)
+                            ).strftime("%m.%d.%Y, %H:%M")
             database.create_entry(
-                entry_content, current_time.strftime("%m.%d.%Y, %H:%M"))
+                entry_content, current_time)
             flash("Gönderi Başarılı")
         except Exception as e:
             pass
