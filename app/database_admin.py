@@ -6,7 +6,6 @@ class DuvarovDB():
     def __init__(self) -> None:
         self._database = "d5ggjt80j3jic5"
         self._user = "lewormdmwvpmrv"
-        # self.password = os.getenv("duvarov_password")
         self._host = "ec2-18-214-211-47.compute-1.amazonaws.com"
 
     def connect_db(self, password):
