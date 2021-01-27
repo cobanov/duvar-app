@@ -16,7 +16,7 @@ def entryFilter(content):
 
         for word in content:
             if word in bad_words_list:
-                word = len(word) * '*'
+                word = word[0] + (len(word) * '*')
                 clean_content.append(word)
             else:
                 clean_content.append(word)
