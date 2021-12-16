@@ -9,38 +9,32 @@ WIPE_ENTRIES = "DROP TABLE entries"
 UPVOTE = "UPDATE entries SET vote = vote + 1 WHERE message_id = (?)"
 DELETE_ENTRY = "DELETE FROM entries WHERE message_id = (?)"
 
-message_id = 1
-
-
 def create_tables():
     with sqlite3.connect("data.db") as connection:
         connection.execute(CREATE_TABLE)
 
+def get_current_message_id():
+    with open('currentmessageid.txt', 'r+') as f:
+        msg_id = f.read()
+
+    return msg_id
+
 
 def create_entry(content, date):
-
-    global message_id
+    message_id = get_current_message_id()
 
     if entryContentCheck(content):
         content = entryFilter(content)
         with sqlite3.connect("data.db") as connection:
-
             try:
                 connection.execute(
                     CREATE_ENTRY, (message_id, content, date, 0))
-                message_id += 1
 
-            except Exception as e:
-                if "message_id" in str(e):
-                    while True:
-                        try:
-                            connection.execute(
-                                CREATE_ENTRY, (message_id, content, date, 0))
-                            message_id += 1
-                            break
+                with open('currentmessageid.txt', 'w') as f:
+                    f.write(int(message_id) + 1)
 
-                        except:
-                            message_id += 1
+            except Exception:
+                pass
 
 
 def retrieve_entries():
