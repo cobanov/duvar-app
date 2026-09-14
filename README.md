@@ -1,3 +1,5 @@
+> **Arşivlendi (Eylül 2026).** 2021 projesi, geliştirilmiyor.
+
 # duvar-app
 
 ![](app/static/assets/duvarov.png)
